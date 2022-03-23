@@ -1,0 +1,187 @@
+1.  interpolation  	 {{ }} (1-way)   (component-->view)
+2.  property Binding  [property_name ]  = “expression    ”  (1-way)   (component-->view)
+3.  Event Binding     ( )  (1-way)   (view-->component)
+4.  2-way Binding  [(ngModel)] (2-way) (component<-->view)
+
+
+
+attributes = to manupulate dom *ngIf ,*ngFor , *ngStyle
+
+
+
+src alt innerHtml title
+
+
+----------------------------------------------------------------------
+Directive
+
+1. Directive is a way to extend our HTML including both view as well as behaviour
+
+2. Directives are used to extend the power of HTML 
+
+3. Mainly 3 types of directives 
+
+   a:  Component Directive —directives with a template. This type of directive is the most common directive type.
+
+    b: Structural Directive —directives that change the DOM layout by adding and removing DOM elements.
+        ngIf
+        ngFor
+        ngSwitch
+
+    c: Attribute Directive —directives that change the appearance or behavior of an element, component, or another directive. 
+        ngClass
+        ngStyle 
+
+4. Examples 
+    AppComponent -> Componnt Directive 
+
+5: Structrual Directives 
+
+1. Structrual Directives will help us in extending, adding or removing elements from the HTML page 
+
+2. DOM Mainupulation 
+
+3. 3 types of Structrual Directives
+
+    ngIf
+    ngFor
+    ngSwitch 
+
+4. asterisk (*) means its a built in Structrual directive 
+
+E.g ngIf 
+    <div *ngIf="<condition>"> Value 1</div> 
+ 
+
+1. It will always have * astrisk symobl 
+2. Built in structural directive 
+3. The ngIf condition will evaluate the expression and result true or false 
+4. We can use OR (||), And ( &&) and we can also use NOT(!) operators inside ngIf
+
+5. We can have multiple use cases 
+
+    - ngIf -> done
+        -> logical opeartors 
+            OR (||)
+            AND (&&)
+            NOT (!)
+    - ngIf else -> 
+    - ngIf then else 
+
+5. Custom Directives 
+
+    ng g directive highlight
+
+    - This is an advanced topic 
+    - We will revisit this topic again once we have our foundations better 
+
+-------------------------------------------------------------------------------------------------
+6: Communication between various Angular components 
+
+Contacts -> Module 
+
+    contact-listing -> parent component 
+        contact-grid -> child component 
+        contact-tools -> child component 
+            download-pdf -> sub-child component 
+            download-excel 
+
+Leads -> Module 
+
+    leads-listing -> parent component 
+
+
+
+Components are hierarchial 
+Parent-child relationship 
+
+p1
+    child1
+        sub-child1
+    child2
+
+p2 
+    p2-child1
+
+1. Communications between the related components 
+    parent component -> child components
+        @Input 
+    parent components <- child components
+        @Output 
+
+    Leads Module 
+        leads-listing 
+            leads-grid 
+            leads-tools 
+                download-excel
+                download-pdf
+
+2. communication between totally unrealted components 
+    Component1 -> Services <-   Component2
+
+    services 
+        is a common reusable piece of functionality shared between different components
+
+------------------------------------------------------------------------------------------------------
+
+Built-In Pipes 
+
+1. Pipe is used to transform the input data into ouput desired format 
+
+2. Built in pipes - we use them in templates 
+
+3. We can use multiple pipes in the template on elements 
+
+4. Syntax is 
+    <div> {{ <input_data> | <name_of_pipe> }} </div>
+
+4. Built-In Pipes which are readily available for us to use 
+
+    lowercase 
+        -> saving usernames/email_address 
+            -> lowercase 
+    uppercase 
+        -> currency 
+        -> Airport Codes 
+
+    date 
+        -> by default Mon, dd, yyyy 
+
+    json 
+        -> I use this specially for debug purpose 
+        -> showing <code> 
+
+    currency
+        -> by default uses dollar symbol $
+    
+    percent 
+        -> by Default is rounding to near by integer 
+        -> multiple by 100 and add % symbol 
+
+
+
+    - Parameterizing Pipes 
+
+1. Pipes can accept 1 or more parameters 
+    -> conditions/filters/specific data based on which data will be transformed 
+
+2. Some of the built in pipes which accept parameters are:
+
+    - currency 
+    - date 
+        'MMM-dd-yyyy'
+        'short'
+        'long'
+    - percent 
+        | percent : <minimumBeforeDecial>.<miniumDecialNumbers>-<maxDecimalNumbers>
+
+3. Syntax for writing parameter pipes 
+    {{ <data_input> | <pipe_name> : <parameter> }}
+
+
+    - Chaining Pipes
+
+1. using multiple pipes on a data input is called as chaining pipes.we can pass one or more pipes to a data input
+ .{{dob|date|uppercase}}
+
+ 
